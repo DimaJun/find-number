@@ -1,0 +1,15 @@
+#parent {
+	text-align: center;
+}
+#field {
+	display: inline-block;
+}
+
+#field td {
+	padding: 20px;
+	border: 1px solid black;
+	cursor: pointer;
+}
+.active {
+	background: red;
+}
