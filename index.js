@@ -1,7 +1,11 @@
 window.addEventListener("DOMContentLoaded", () => {
   let field = document.querySelector("#field");
+  let startButton = document.querySelector("#start-game");
+  let timerOutput = document.querySelector("#timer");
   let size = 2;
-
+  let timerCounter = 0;
+  let timerInterval = null;
+  
   function start(size) {
     activate(build(field, prepare(size)), size);
   }
@@ -74,6 +78,11 @@ window.addEventListener("DOMContentLoaded", () => {
         cell.addEventListener('click', (e) => {
             let target = e.target;
             if(counter == last) {
+                showLevelResult(timerOutput, timerInterval);
+                setTimeout(() => {
+                    timerOutput.parentNode.style.display = 'none';
+                }, 800)
+                timerCounter = 0;
                 start(++size);
             }
             if(target.textContent == counter) {
@@ -86,5 +95,19 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  start(size);
+
+  function startTimer() {
+    timerInterval = setInterval(() => timerCounter++, 1000);
+  }
+
+  function showLevelResult(output) {
+    output.textContent = timerCounter;
+    output.parentNode.style.display = 'block';
+  }
+
+  startButton.addEventListener('click', function startgame() {
+    start(size);
+    startTimer();
+    startButton.removeEventListener('click', startgame);
+  })
 });

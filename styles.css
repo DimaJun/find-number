@@ -1,5 +1,10 @@
 #parent {
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	row-gap: 30px;
 }
 #field {
 	display: inline-block;
@@ -10,6 +15,25 @@
 	border: 1px solid black;
 	cursor: pointer;
 }
+
+#start-game {
+	border: 0;
+	width: 100px;
+	height: 30px;
+	font-weight: 700;
+}
+
+.timer-wrapper {
+	font-size: 20px;
+	font-weight: 500;
+}
+
+#timer {
+	font-weight: 600;
+	font-size: 32px;
+	color:chocolate;
+}
+
 .active {
-	background: red;
+	background: lightgreen;
 }
